@@ -21,7 +21,7 @@ def shuffle(l):
 
 def in_region(region, point):
     rx, ry, rw, rh = region
-    x, y, _ = point
+    x, y = point
 
     return (
         x > rx and x < rx + rw and
@@ -71,7 +71,7 @@ while True:
             reset_active = False
             main_screen()
         for k, touchpoint in touchpoints.items():
-            if in_region(touchpoint['region'], touch):
+            if in_region(touchpoint['region'], (touch[0], touch[1])):
                 reset_active = True
                 touchpoint['action']()
 
